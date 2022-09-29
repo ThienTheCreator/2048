@@ -1,3 +1,55 @@
-#container{
-    font-size: 100px;
+:root{
+    --grid-background: #bbada0;
+    --tile-color: white; 
 }
+
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#score{
+    font-size: 50pt;
+}
+
+#grid-background{
+    width: 500px;
+    height: 500px;
+    background-color: var(--grid-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-container{
+    width: 470px;
+    height: 470px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile{
+    width: 106.25px;
+    height: 106.25px;
+    font-size: 20pt;
+    background-color: var(--tile-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-container > div{
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+#grid-container > div:nth-child(4n){
+    margin-right: 0px;
+}
+
+#grid-container > div:nth-child(n + 13){
+    margin-bottom: 0px;
+}
+/* 107 x 107*/

@@ -16,20 +16,18 @@ function printScore(){
 }
 
 function printBoard(){
-    let str = "";
-    for(row of board){
-        for(square of row){
-            let temp = "";
-            for(let i = 0; i < 10 - square.toString().length; i++){
-                console.log(i);
-                temp += "&nbsp;";
+    let id = "";
+    for(let i = 0; i < m; i++){
+        for(let j = 0; j < n; j++){
+            id = "" + i + j;
+            if(board[i][j] == 0){
+                document.getElementById(id).innerHTML = "";
+            }else{
+                document.getElementById(id).innerHTML = board[i][j];
             }
-            str += square + temp;
         }
-        str += "<br/><br/>";
     }
 
-    document.getElementById("container").innerHTML = str;
 };
 
 document.onkeydown = async function (event) {
