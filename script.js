@@ -4,10 +4,8 @@ let board = Array(m).fill().map(() => Array(n).fill(0));
 let score = 0;
 
 onload = function(event){
-    board[0][0] = 2;
-    board[0][1] = 2;
-    board[0][2] = 2;
-    board[0][3] = 2;
+    newNumber();
+    newNumber();
     printBoard();
 }
 
