@@ -1,6 +1,7 @@
 :root{
     --grid-background: #bbada0;
-    --tile-color: white; 
+    --tile-color: white;
+    --tile-empty-color: rgba(238, 228, 218, 0.35);
 }
 
 #container{
@@ -10,8 +11,13 @@
     align-items: center;
 }
 
+
+#gameName{
+    font-size: 150px;
+}
+
 #score{
-    font-size: 50pt;
+    font-size: 75px;
 }
 
 #grid-background{
@@ -33,11 +39,18 @@
 .tile{
     width: 106.25px;
     height: 106.25px;
-    font-size: 20pt;
+    font-size: 55px;
+    font-weight: bold;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    color: #ffffff;
     background-color: var(--tile-color);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.tile:empty{
+    background-color: var(--tile-empty-color);
 }
 
 #grid-container > div{
@@ -52,4 +65,54 @@
 #grid-container > div:nth-child(n + 13){
     margin-bottom: 0px;
 }
-/* 107 x 107*/
+
+.tile.tile-2{
+    background-color: #eee4da;
+    color: #776e65;
+}
+
+.tile.tile-4{
+    background-color: #eee1c9;
+    color: #776e65;
+}
+
+.tile.tile-8{
+    background-color: #f3b27a;
+}
+
+.tile.tile-16{
+    background-color: #f69664;
+}
+
+.tile.tile-32{
+    background-color: #f77c5f;
+}
+
+.tile.tile-64{
+    background-color: #f75f3b;
+}
+
+.tile.tile-128{
+    background-color: #edd073;
+    font-size: 45px;
+}
+
+.tile.tile-256{
+    background-color: #edcc62;
+    font-size: 45px;
+}
+
+.tile.tile-512{
+    background-color: #edc950;
+    font-size: 45px;
+}
+
+.tile.tile-1024{
+    background-color: #edc53f;
+    font-size: 35px;
+}
+
+.tile.tile-2048{
+    background-color: #edc22e;
+    font-size: 35px;
+}

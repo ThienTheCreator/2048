@@ -21,8 +21,10 @@ function printBoard(){
         for(let j = 0; j < n; j++){
             id = "" + i + j;
             if(board[i][j] == 0){
+                document.getElementById(id).className = "tile";
                 document.getElementById(id).innerHTML = "";
             }else{
+                document.getElementById(id).className = "tile tile-" + board[i][j];
                 document.getElementById(id).innerHTML = board[i][j];
             }
         }
@@ -117,20 +119,20 @@ function testBoard(key) {
         }
     }
 
-    if(key == "w" && up == false)
+    if((key == "w" || key == "ArrowUp") && up == false)
         return;
 
-    if(key == "a" && left == false)
+    if((key == "a" || key == "ArrowLeft") && left == false)
         return;
     
-    if(key == "s" && down == false)
+    if((key == "s" || key == "ArrowDown") && down == false)
         return;
     
-    if(key == "d" && right == false)
+    if((key == "d" || key == "ArrowRight") && right == false)
         return;
 
     switch (key) {
-        case "w":
+        case "w": case "ArrowUp":
             for (let j = 0; j < n; j++) {
                 for (let i = 1; i < m; i++) {
                     if (board[i][j] != 0) {
@@ -167,7 +169,7 @@ function testBoard(key) {
                 }
             }
             break;
-        case "a":
+        case "a": case "ArrowLeft":
             for (let i = 0; i < m; i++) {
                 for (let j = 1; j < n; j++) {
                     if (board[i][j] != 0) {
@@ -204,7 +206,7 @@ function testBoard(key) {
                 }
             }
             break;
-        case "s":
+        case "s": case "ArrowDown":
             for (let j = 0; j < n; j++) {
                 for (let i = m - 2; i >= 0; i--) {
                     if (board[i][j] != 0) {
@@ -241,7 +243,7 @@ function testBoard(key) {
                 }
             }
             break;
-        case "d":
+        case "d": case "ArrowRight":
             for (let i = 0; i < m; i++) {
                 for (let j = n - 2; j >= 0; j--) {
                     if (board[i][j] != 0) {
