@@ -13,11 +13,35 @@
 
 
 #gameName{
-    font-size: 150px;
+    font-size: 80px;
+    font-weight: bold;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
-#score{
+#scoreBox{
+    width: 150px;
+    height: 80px;
+    background-color: #bbada0;
+    color: #ffffff;
     font-size: 75px;
+    font-weight: bold;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#scoreTitle{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#scoreVal{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 #grid-background{

@@ -12,7 +12,7 @@ onload = function(event){
 }
 
 function printScore(){
-    document.getElementById("score").innerHTML = "Score: " + score;
+    document.getElementById("scoreVal").innerHTML = score;
 }
 
 function printBoard(){
