@@ -131,158 +131,317 @@ function testBoard(key) {
 
     switch (key) {
         case "w": case "ArrowUp":
-            for (let j = 0; j < n; j++) {
-                for (let i = 1; i < m; i++) {
-                    if (board[i][j] != 0) {
-                        for (let index = 0; index < i; index++) {
-                            if (board[index][j] == 0) {
-                                board[index][j] = board[i][j];
-                                board[i][j] = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            for (let j = 0; j < n; j++) {
-                for (let i = 1; i < m; i++) {
-                    if (board[i][j] == board[i-1][j]) {
-                        board[i - 1][j] *= 2;
-                        board[i][j] = 0;
-                        score += board[i-1][j];
-                    }
-                }
-            }
-            for (let j = 0; j < n; j++) {
-                for (let i = 1; i < m; i++) {
-                    if (board[i][j] != 0) {
-                        for (let index = 0; index < i; index++) {
-                            if (board[index][j] == 0) {
-                                board[index][j] = board[i][j];
-                                board[i][j] = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
+            moveUp();
             break;
         case "a": case "ArrowLeft":
-            for (let i = 0; i < m; i++) {
-                for (let j = 1; j < n; j++) {
-                    if (board[i][j] != 0) {
-                        for(let index = 0; index < j; index++){
-                            if (board[i][index] == 0) {
-                                board[i][index] = board[i][j];
-                                board[i][j] = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            for (let i = 0; i < m; i++) {
-                for (let j = 1; j < n; j++) {
-                    if (board[i][j] == board[i][j-1]) {
-                        board[i][j - 1] *= 2;
-                        board[i][j] = 0;
-                        score += board[i][j-1];
-                    }
-                }
-            }
-            for (let i = 0; i < m; i++) {
-                for (let j = 1; j < n; j++) {
-                    if (board[i][j] != 0) {
-                        for(let index = 0; index < j; index++){
-                            if (board[i][index] == 0) {
-                                board[i][index] = board[i][j];
-                                board[i][j] = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
+            moveLeft();
             break;
         case "s": case "ArrowDown":
-            for (let j = 0; j < n; j++) {
-                for (let i = m - 2; i >= 0; i--) {
-                    if (board[i][j] != 0) {
-                        for (let index = m-1; index > 0; index--) {
-                            if (board[index][j] == 0) {
-                                board[index][j] = board[i][j];
-                                board[i][j] = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            for (let j = 0; j < n; j++) {
-                for (let i = m - 2; i >= 0; i--) {
-                    if (board[i][j] == board[i+1][j]) {
-                        board[i + 1][j] *= 2;
-                        board[i][j] = 0;
-                        score += board[i+1][j];
-                    }
-                }
-            }
-            for (let j = 0; j < n; j++) {
-                for (let i = m - 2; i >= 0; i--) {
-                    if (board[i][j] != 0) {
-                        for (let index = m-1; index > 0; index--) {
-                            if (board[index][j] == 0) {
-                                board[index][j] = board[i][j];
-                                board[i][j] = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
+            moveDown();
             break;
         case "d": case "ArrowRight":
-            for (let i = 0; i < m; i++) {
-                for (let j = n - 2; j >= 0; j--) {
-                    if (board[i][j] != 0) {
-                        for(let index = n - 1; index > j; index--){
-                            if (board[i][index] == 0) {
-                                board[i][index] = board[i][j];
-                                board[i][j] = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            for (let i = 0; i < m; i++) {
-                for (let j = n - 2; j >= 0; j--) {
-                    if (board[i][j] == board[i][j+1]) {
-                        board[i][j + 1] *= 2;
-                        board[i][j] = 0;
-                        score += board[i][j+1];
-                    }
-                }
-            }
-            for (let i = 0; i < m; i++) {
-                for (let j = n - 2; j >= 0; j--) {
-                    if (board[i][j] != 0) {
-                        for(let index = n - 1; index > j; index--){
-                            if (board[i][index] == 0) {
-                                board[i][index] = board[i][j];
-                                board[i][j] = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
+            moveRight();
             break;
         default:
             return;
     }
     newNumber();
 }
+
+function moveUp(){
+    for (let j = 0; j < n; j++) {
+        for (let i = 1; i < m; i++) {
+            if (board[i][j] != 0) {
+                for (let index = 0; index < i; index++) {
+                    if (board[index][j] == 0) {
+                        board[index][j] = board[i][j];
+                        board[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    for (let j = 0; j < n; j++) {
+        for (let i = 1; i < m; i++) {
+            if (board[i][j] == board[i-1][j]) {
+                board[i - 1][j] *= 2;
+                board[i][j] = 0;
+                score += board[i-1][j];
+            }
+        }
+    }
+    for (let j = 0; j < n; j++) {
+        for (let i = 1; i < m; i++) {
+            if (board[i][j] != 0) {
+                for (let index = 0; index < i; index++) {
+                    if (board[index][j] == 0) {
+                        board[index][j] = board[i][j];
+                        board[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+function moveLeft(){
+    for (let i = 0; i < m; i++) {
+        for (let j = 1; j < n; j++) {
+            if (board[i][j] != 0) {
+                for(let index = 0; index < j; index++){
+                    if (board[i][index] == 0) {
+                        board[i][index] = board[i][j];
+                        board[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    for (let i = 0; i < m; i++) {
+        for (let j = 1; j < n; j++) {
+            if (board[i][j] == board[i][j-1]) {
+                board[i][j - 1] *= 2;
+                board[i][j] = 0;
+                score += board[i][j-1];
+            }
+        }
+    }
+    for (let i = 0; i < m; i++) {
+        for (let j = 1; j < n; j++) {
+            if (board[i][j] != 0) {
+                for(let index = 0; index < j; index++){
+                    if (board[i][index] == 0) {
+                        board[i][index] = board[i][j];
+                        board[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+function moveDown(){
+    for (let j = 0; j < n; j++) {
+        for (let i = m - 2; i >= 0; i--) {
+            if (board[i][j] != 0) {
+                for (let index = m-1; index > 0; index--) {
+                    if (board[index][j] == 0) {
+                        board[index][j] = board[i][j];
+                        board[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    for (let j = 0; j < n; j++) {
+        for (let i = m - 2; i >= 0; i--) {
+            if (board[i][j] == board[i+1][j]) {
+                board[i + 1][j] *= 2;
+                board[i][j] = 0;
+                score += board[i+1][j];
+            }
+        }
+    }
+    for (let j = 0; j < n; j++) {
+        for (let i = m - 2; i >= 0; i--) {
+            if (board[i][j] != 0) {
+                for (let index = m-1; index > 0; index--) {
+                    if (board[index][j] == 0) {
+                        board[index][j] = board[i][j];
+                        board[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+function moveRight(){
+    for (let i = 0; i < m; i++) {
+        for (let j = n - 2; j >= 0; j--) {
+            if (board[i][j] != 0) {
+                for(let index = n - 1; index > j; index--){
+                    if (board[i][index] == 0) {
+                        board[i][index] = board[i][j];
+                        board[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    for (let i = 0; i < m; i++) {
+        for (let j = n - 2; j >= 0; j--) {
+            if (board[i][j] == board[i][j+1]) {
+                board[i][j + 1] *= 2;
+                board[i][j] = 0;
+                score += board[i][j+1];
+            }
+        }
+    }
+    for (let i = 0; i < m; i++) {
+        for (let j = n - 2; j >= 0; j--) {
+            if (board[i][j] != 0) {
+                for(let index = n - 1; index > j; index--){
+                    if (board[i][index] == 0) {
+                        board[i][index] = board[i][j];
+                        board[i][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+
+let xDown = null;                                                        
+let yDown = null;
+
+function getTouches(evt) {
+  return evt.touches ||             // browser API
+         evt.originalEvent.touches; // jQuery
+}                                                     
+                                                                         
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];                                      
+    xDown = firstTouch.clientX;                                      
+    yDown = firstTouch.clientY;                                      
+};                                                
+                                                                         
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    let up = false;
+    let left = false;
+    let down = false;
+    let right = false;
+
+    for (let j = 0; j < n; j++) {
+        for (let i = 1; i < m; i++) {
+            if (board[i][j] == board[i-1][j] && board[i][j] != 0) {
+                up = true;
+                down = true;
+                break;
+            }
+        }
+        if(up && down)
+            break;
+    }
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 1; j < n; j++) {
+            if (board[i][j] == board[i][j-1] && board[i][j] != 0) {
+                left = true;
+                right = true;
+                break;
+            }
+        }
+        if(right && left)
+            break;
+    }
+
+    for (let j = 0; j < n; j++) {
+        if(up)
+            break;
+
+        for (let i = 1; i < m; i++) {
+            if (board[i][j] != 0 && board[i-1][j] == 0) {
+                up = true;
+                break;
+            }
+        }
+    }
+
+    for (let i = 0; i < m; i++) {
+        if(left)
+            break;
+
+        for (let j = 1; j < n; j++) {
+            if (board[i][j] != 0 && board[i][j-1] == 0) {
+                left = true;
+                break;
+            }
+        }
+    }
+    
+    for (let j = 0; j < n; j++) {
+        if(down)
+            break;
+
+        for (let i = m - 2; i >= 0; i--) {
+            if (board[i][j] != 0 && board[i+1][j] == 0) {
+                down = true;
+                break;
+            }
+        }
+    }
+
+    for (let i = 0; i < m; i++) {
+        if(right)
+            break;
+
+        for (let j = n - 2; j >= 0; j--) {
+            if (board[i][j] != 0 && board[i][j+1] == 0) {
+                right = true;
+                break;
+            }
+        }
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+                                                                         
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+            /* swipe left*/
+            if(left == false)
+                return;
+
+            moveLeft();
+        } else {
+            /* swipe right*/
+            if(right == false)
+                return;
+
+            moveRight();
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+            /* swipe up*/
+            if(up == false)
+                return;
+
+            moveUp();
+        } else { 
+            /* swipe down*/
+            if(down == false)
+                return;
+
+            moveDown();
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;
+    
+    newNumber();
+    printBoard();
+};
+
 
 function newNumber(){
     let arr = new Array();
