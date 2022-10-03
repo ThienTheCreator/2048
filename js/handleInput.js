@@ -4,8 +4,59 @@ document.onkeydown = function (event) {
         return;
 
     handleKeyPress(event.key);
-    updateScore();
+    if(isWin() && !hasWon){
+        document.getElementById("endScreen").innerHTML = "Congradulations! You Win!";
+        document.getElementById("endScreen").style.zIndex = "0";
+        document.getElementById("endScreen").className = "endAnimation";
+        setTimeout(function() {
+            // function code goes here
+            document.getElementById("endScreen").style.zIndex = "-1";
+        }, 3000);
+        hasWon = true;
+    };
+    if(isLose()){
+        document.getElementById("endScreen").innerHTML = "Game Over!";
+        document.getElementById("endScreen").style.zIndex = "0";
+        document.getElementById("endScreen").className = "endAnimation";
+    };
     updateBoard();
+};
+
+function isWin(){
+    for(let i = 0; i < m; i++){
+        for(let j = 0; j < n; j++){
+            if(board[i][j] == 2048){   
+                return true;
+            }
+        }
+    }
+
+    return false;
+};
+
+function isLose(){
+    for(let i = 0; i < m; i++){
+        for(let j = 0; j < n; j++){
+            if(board[i][j] == 0)
+                return false;
+        }
+    }
+
+    for(let i = 0; i < m; i++){
+        for(let j = 1; j < n; j++){
+            if(board[i][j] == board[i][j-1])
+                return false;
+        }
+    }
+
+    for(let j = 0; j < n; j++){
+        for(let i = 1; i < m; i++){
+            if(board[i][j] == board[i-1][j])
+                return false;
+        }
+    }
+
+    return true;
 };
 
 // check if move is possible with given input
@@ -40,9 +91,9 @@ function handleKeyPress(key) {
         default:
             return;
     }
+    updateScore();
     newNumber();
 }
-
 
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);

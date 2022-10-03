@@ -140,3 +140,29 @@
     background-color: #edc22e;
     font-size: 35px;
 }
+
+#endScreen{
+    width: 500px;
+    height: 500px;
+    font-size: 55px;
+    font-weight: bold;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    background-color: rgba(237, 194, 46, 0.5);
+    opacity: .7;
+    position: absolute;
+    z-index: -1;
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.endAnimation {
+    animation: endTransition 1.8s;
+}
+
+@keyframes endTransition {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

@@ -1,6 +1,7 @@
 onload = function(event){
     newNumber();
     newNumber();
+    
     updateBoard();
 }
 
@@ -49,3 +50,6 @@ function updateBoard(){
     }
 
 };
+
+
+
