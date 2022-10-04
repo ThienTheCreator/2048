@@ -4,28 +4,35 @@ document.onkeydown = function (event) {
         return;
 
     handleKeyPress(event.key);
-    if(isWin() && !hasWon){
+    if(isWin(mainGame) && !mainGame.hasWon){
         document.getElementById("endScreen").innerHTML = "Congradulations! You Win!";
         document.getElementById("endScreen").style.zIndex = "0";
         document.getElementById("endScreen").className = "endAnimation";
+        
+        // make screen disappear after some time
         setTimeout(function() {
-            // function code goes here
             document.getElementById("endScreen").style.zIndex = "-1";
+            document.getElementById("endScreen").className = "endScreen";
         }, 3000);
-        hasWon = true;
+        
+        mainGame.hasWon = true;
     };
-    if(isLose()){
+    if(isLose(mainGame)){
         document.getElementById("endScreen").innerHTML = "Game Over!";
         document.getElementById("endScreen").style.zIndex = "0";
         document.getElementById("endScreen").className = "endAnimation";
     };
-    updateBoard();
+    updateBoard(mainGame);
 };
 
-function isWin(){
+function isWin(aGameState){
+    let m = aGameState.m;
+    let n = aGameState.n;
+    let aBoard = aGameState.board;
+
     for(let i = 0; i < m; i++){
         for(let j = 0; j < n; j++){
-            if(board[i][j] == 2048){   
+            if(aBoard[i][j] == 2048){   
                 return true;
             }
         }
@@ -34,24 +41,28 @@ function isWin(){
     return false;
 };
 
-function isLose(){
+function isLose(aGameState){
+    let m = aGameState.m;
+    let n = aGameState.n;
+    let aBoard = aGameState.board;
+
     for(let i = 0; i < m; i++){
         for(let j = 0; j < n; j++){
-            if(board[i][j] == 0)
+            if(aBoard[i][j] == 0)
                 return false;
         }
     }
 
     for(let i = 0; i < m; i++){
         for(let j = 1; j < n; j++){
-            if(board[i][j] == board[i][j-1])
+            if(aBoard[i][j] == aBoard[i][j-1])
                 return false;
         }
     }
 
     for(let j = 0; j < n; j++){
         for(let i = 1; i < m; i++){
-            if(board[i][j] == board[i-1][j])
+            if(aBoard[i][j] == aBoard[i-1][j])
                 return false;
         }
     }
@@ -61,7 +72,7 @@ function isLose(){
 
 // check if move is possible with given input
 function handleKeyPress(key) {
-    let [up, left, down, right] = possibleMove();
+    let [up, left, down, right] = possibleMove(mainGame);
 
     if((key == "w" || key == "ArrowUp") && up == false)
         return;
@@ -77,22 +88,23 @@ function handleKeyPress(key) {
 
     switch (key) {
         case "w": case "ArrowUp":
-            moveUp();
+            mainGame = moveUp(mainGame);
             break;
         case "a": case "ArrowLeft":
-            moveLeft();
+            mainGame = moveLeft(mainGame);
             break;
         case "s": case "ArrowDown":
-            moveDown();
+            mainGame = moveDown(mainGame);
             break;
         case "d": case "ArrowRight":
-            moveRight();
+            mainGame = moveRight(mainGame);
             break;
         default:
             return;
     }
-    updateScore();
-    newNumber();
+    updateScore(mainGame);
+    mainGame = newNumber(mainGame);
+    updateBoard(mainGame);
 }
 
 document.addEventListener('touchstart', handleTouchStart, false);        
@@ -117,7 +129,7 @@ function handleTouchMove(evt) {
         return;
     }
 
-    let [up, left, down, right] = possibleMove();
+    let [up, left, down, right] = possibleMove(mainGame);
 
     var xUp = evt.touches[0].clientX;                                    
     var yUp = evt.touches[0].clientY;
@@ -131,13 +143,13 @@ function handleTouchMove(evt) {
             if(left == false)
                 return;
 
-            moveLeft();
+            mainGame = moveLeft(mainGame);
         } else {
             /* swipe right*/
             if(right == false)
                 return;
 
-            moveRight();
+            mainGame = moveRight(mainGame);
         }                       
     } else {
         if ( yDiff > 0 ) {
@@ -145,19 +157,20 @@ function handleTouchMove(evt) {
             if(up == false)
                 return;
 
-            moveUp();
+            mainGame = moveUp(mainGame);
         } else { 
             /* swipe down*/
             if(down == false)
                 return;
 
-            moveDown();
+            mainGame = moveDown(mainGame);
         }                                                                 
     }
     /* reset values */
     xDown = null;
     yDown = null;
-    
-    newNumber();
-    updateBoard();
+
+    updateScore(mainGame);
+    mainGame = newNumber(mainGame);
+    updateBoard(mainGame);
 };

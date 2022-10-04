@@ -1,16 +1,20 @@
 onload = function(event){
-    newNumber();
-    newNumber();
-    
-    updateBoard();
+    window.mainGame = new gameState();
+    mainGame = newNumber(mainGame);
+    mainGame = newNumber(mainGame);    
+    updateBoard(mainGame);
 }
 
 // a new number is generate 90% chance of 2 and 10% chance of 4
-function newNumber(){
+function newNumber(aGameState){
+    let newGameState = structuredClone(aGameState);
+    let m = newGameState.m;
+    let n = newGameState.n;
+
     let arr = new Array();
     for(let i = 0; i < n; i++){
         for(let j = 0; j < m; j++){
-            if(board[i][j] == 0){
+            if(newGameState.board[i][j] == 0){
                 arr.push([i,j]);
             }
         }
@@ -27,29 +31,30 @@ function newNumber(){
     let col = arr[index][1];
     
     let num = Math.random() < 0.9 ? 2 : 4;;
-    board[row][col] = num;
+    newGameState.board[row][col] = num;
+
+    return newGameState;
 }
 
-function updateScore(){
-    document.getElementById("scoreVal").innerHTML = score;
+function updateScore(aGameState){
+    document.getElementById("scoreVal").innerHTML = aGameState.score;
 }
 
-function updateBoard(){
+function updateBoard(aGameState){
+    let m = aGameState.m;
+    let n = aGameState.n;
     let id = "";
     for(let i = 0; i < m; i++){
         for(let j = 0; j < n; j++){
             id = "" + i + j;
-            if(board[i][j] == 0){
+            if(aGameState.board[i][j] == 0){
                 document.getElementById(id).className = "tile";
                 document.getElementById(id).innerHTML = "";
             }else{
-                document.getElementById(id).className = "tile tile-" + board[i][j];
-                document.getElementById(id).innerHTML = board[i][j];
+                document.getElementById(id).className = "tile tile-" + aGameState.board[i][j];
+                document.getElementById(id).innerHTML = aGameState.board[i][j];
             }
         }
     }
 
 };
-
-
-

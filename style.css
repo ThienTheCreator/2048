@@ -148,7 +148,7 @@
     font-weight: bold;
     font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
     background-color: rgba(237, 194, 46, 0.5);
-    opacity: .7;
+    color: #ffffff;
     position: absolute;
     z-index: -1;
 
