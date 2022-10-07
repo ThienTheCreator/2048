@@ -44,7 +44,7 @@
     justify-content: center;
 }
 
-#grid-background{
+#gridBackground{
     width: 500px;
     height: 500px;
     background-color: var(--grid-background);
@@ -53,7 +53,7 @@
     align-items: center;
 }
 
-#grid-container{
+#gridContainer{
     width: 470px;
     height: 470px;
     display: flex;
@@ -77,16 +77,16 @@
     background-color: var(--tile-empty-color);
 }
 
-#grid-container > div{
+#gridContainer > div{
     margin-right: 15px;
     margin-bottom: 15px;
 }
 
-#grid-container > div:nth-child(4n){
+#gridContainer > div:nth-child(4n){
     margin-right: 0px;
 }
 
-#grid-container > div:nth-child(n + 13){
+#gridContainer > div:nth-child(n + 13){
     margin-bottom: 0px;
 }
 
@@ -165,4 +165,34 @@
 @keyframes endTransition {
     0% { opacity: 0; }
     100% { opacity: 1; }
+}
+
+#buttonContainer{
+    padding-top: 10px;
+}
+
+#resetButton{
+    width: 150px;
+    height: 80px;
+    background-color: #bbada0;
+    color: #ffffff;
+    font-size: 30px;
+
+    margin-right: 10px;
+}
+
+#resetButton:hover{
+    opacity: .5;
+}
+
+#AIButton{
+    width: 150px;
+    height: 80px;
+    background-color: #bbada0;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+#AIButton:hover{
+    opacity: .5;
 }

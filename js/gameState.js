@@ -32,3 +32,4 @@ class gameState{
     }
 }
 
+let mainGame = new gameState();

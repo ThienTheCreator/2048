@@ -3,7 +3,18 @@ document.onkeydown = function (event) {
     if(event.repeat)
         return;
 
-    handleKeyPress(event.key);
+    playMove(event.key);
+};
+
+function playMove(key){
+    let tempGameState = nextGameState(key, mainGame);
+    if(tempGameState != undefined){
+        mainGame = tempGameState; 
+        updateScore(mainGame);
+        mainGame = newNumber(mainGame);
+        updateBoard(mainGame);
+    }
+    
     if(isWin(mainGame) && !mainGame.hasWon){
         document.getElementById("endScreen").innerHTML = "Congradulations! You Win!";
         document.getElementById("endScreen").style.zIndex = "0";
@@ -23,7 +34,7 @@ document.onkeydown = function (event) {
         document.getElementById("endScreen").className = "endAnimation";
     };
     updateBoard(mainGame);
-};
+}
 
 function isWin(aGameState){
     let m = aGameState.m;
@@ -71,8 +82,8 @@ function isLose(aGameState){
 };
 
 // check if move is possible with given input
-function handleKeyPress(key) {
-    let [up, left, down, right] = possibleMove(mainGame);
+function nextGameState(key, aGameState) {
+    let [up, left, down, right] = possibleMove(aGameState);
 
     if((key == "w" || key == "ArrowUp") && up == false)
         return;
@@ -88,23 +99,22 @@ function handleKeyPress(key) {
 
     switch (key) {
         case "w": case "ArrowUp":
-            mainGame = moveUp(mainGame);
+            aGameState = moveUp(aGameState);
             break;
         case "a": case "ArrowLeft":
-            mainGame = moveLeft(mainGame);
+            aGameState = moveLeft(aGameState);
             break;
         case "s": case "ArrowDown":
-            mainGame = moveDown(mainGame);
+            aGameState = moveDown(aGameState);
             break;
         case "d": case "ArrowRight":
-            mainGame = moveRight(mainGame);
+            aGameState = moveRight(aGameState);
             break;
         default:
             return;
     }
-    updateScore(mainGame);
-    mainGame = newNumber(mainGame);
-    updateBoard(mainGame);
+    
+    return aGameState;
 }
 
 document.addEventListener('touchstart', handleTouchStart, false);        
@@ -129,13 +139,14 @@ function handleTouchMove(evt) {
         return;
     }
 
-    let [up, left, down, right] = possibleMove(mainGame);
-
     var xUp = evt.touches[0].clientX;                                    
     var yUp = evt.touches[0].clientY;
 
     var xDiff = xDown - xUp;
     var yDiff = yDown - yUp;
+
+    
+    let [up, left, down, right] = possibleMove(mainGame);
                                                                          
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
@@ -166,6 +177,7 @@ function handleTouchMove(evt) {
             mainGame = moveDown(mainGame);
         }                                                                 
     }
+    
     /* reset values */
     xDown = null;
     yDown = null;
@@ -174,3 +186,26 @@ function handleTouchMove(evt) {
     mainGame = newNumber(mainGame);
     updateBoard(mainGame);
 };
+
+function resetGame(){
+    mainGame = new gameState();
+    mainGame = newNumber(mainGame);
+    mainGame = newNumber(mainGame);    
+    updateBoard(mainGame);
+    updateScore(mainGame);
+
+    document.getElementById("endScreen").style.zIndex = "-1";
+    document.getElementById("endScreen").className = "endScreen";
+}
+
+function changeAI(){
+    if(AIActive){
+        AIActive = false;
+        document.getElementById("AIButton").innerHTML = "AI: Off";
+    }else{
+        AIActive = true;
+        document.getElementById("AIButton").innerHTML = "AI: On";
+        test();
+    }
+    console.log(AIActive);
+}

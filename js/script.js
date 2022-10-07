@@ -1,5 +1,16 @@
 onload = function(event){
-    window.mainGame = new gameState();
+    let m = mainGame.m;
+    let n = mainGame.n;
+    let gridContainer = this.document.getElementById("gridContainer");
+    for(let i = 0; i < m; i++){
+        for(let j = 0; j < n; j++){
+            let tile = document.createElement("div");
+            tile.className = "tile";
+            tile.id = "" + i + j;
+            gridContainer.appendChild(tile);
+        }
+    }
+
     mainGame = newNumber(mainGame);
     mainGame = newNumber(mainGame);    
     updateBoard(mainGame);

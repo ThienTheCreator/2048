@@ -98,7 +98,8 @@ function possibleMove(aGameState){
 function moveUp(aGameState){
     let m = aGameState.m;
     let n = aGameState.n;
-    let aBoard = aGameState.board;
+    let newGameState = structuredClone(aGameState);
+    let aBoard = newGameState.board;
 
     for (let j = 0; j < n; j++) {
         for (let i = 1; i < m; i++) {
@@ -118,7 +119,7 @@ function moveUp(aGameState){
             if (aBoard[i][j] == aBoard[i-1][j]) {
                 aBoard[i - 1][j] *= 2;
                 aBoard[i][j] = 0;
-                aGameState.score += aBoard[i-1][j];
+                newGameState.score += aBoard[i-1][j];
             }
         }
     }
@@ -136,14 +137,14 @@ function moveUp(aGameState){
         }
     }
     
-    aGameState.board = aBoard;
-    return aGameState;
+    return newGameState;
 }
 
 function moveLeft(aGameState){
     let m = aGameState.m;
     let n = aGameState.n;
-    let aBoard = aGameState.board;
+    let newGameState = structuredClone(aGameState);
+    let aBoard = newGameState.board;
 
     for (let i = 0; i < m; i++) {
         for (let j = 1; j < n; j++) {
@@ -163,7 +164,7 @@ function moveLeft(aGameState){
             if (aBoard[i][j] == aBoard[i][j-1]) {
                 aBoard[i][j - 1] *= 2;
                 aBoard[i][j] = 0;
-                aGameState.score += aBoard[i][j-1];
+                newGameState.score += aBoard[i][j-1];
             }
         }
     }
@@ -181,14 +182,14 @@ function moveLeft(aGameState){
         }
     }
     
-    aGameState.board = aBoard;
-    return aGameState;
+    return newGameState;
 }
 
 function moveDown(aGameState){
     let m = aGameState.m;
     let n = aGameState.n;
-    let aBoard = aGameState.board;
+    let newGameState = structuredClone(aGameState);
+    let aBoard = newGameState.board;
 
     for (let j = 0; j < n; j++) {
         for (let i = m - 2; i >= 0; i--) {
@@ -208,7 +209,7 @@ function moveDown(aGameState){
             if (aBoard[i][j] == aBoard[i+1][j]) {
                 aBoard[i + 1][j] *= 2;
                 aBoard[i][j] = 0;
-                aGameState.score += aBoard[i+1][j];
+                newGameState.score += aBoard[i+1][j];
             }
         }
     }
@@ -226,14 +227,14 @@ function moveDown(aGameState){
         }
     }
 
-    aGameState.board = aBoard;
-    return aGameState;
+    return newGameState;
 }
 
 function moveRight(aGameState){
     let m = aGameState.m;
     let n = aGameState.n;
-    let aBoard = aGameState.board;
+    let newGameState = structuredClone(aGameState);
+    let aBoard = newGameState.board;
 
     for (let i = 0; i < m; i++) {
         for (let j = n - 2; j >= 0; j--) {
@@ -253,7 +254,7 @@ function moveRight(aGameState){
             if (aBoard[i][j] == aBoard[i][j+1]) {
                 aBoard[i][j + 1] *= 2;
                 aBoard[i][j] = 0;
-                aGameState.score += aBoard[i][j+1];
+                newGameState.score += aBoard[i][j+1];
             }
         }
     }
@@ -271,6 +272,5 @@ function moveRight(aGameState){
         }
     }
     
-    aGameState.board = aBoard;
-    return aGameState;
+    return newGameState;
 }
