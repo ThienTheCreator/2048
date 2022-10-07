@@ -7,10 +7,10 @@ function calcHeuristic(aGameState){
     let m = aGameState.m;
     let n = aGameState.n;
     let aBoard = aGameState.board;
-    let matrix = [[16, 9,  5,  1],
-                  [15, 10, 6,  2],
-                  [14, 11, 7,  3],
-                  [13, 12, 8,  4]];
+    let matrix = [[16, 9,  1,  1],
+                  [15, 10, 1,  1],
+                  [14, 11, 1,  1],
+                  [13, 12, 1,  1]];
 
     for(let i = 0; i < m; i++){
         val += matrix[i][0] * aBoard[i][0];
