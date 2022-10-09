@@ -7,10 +7,10 @@ function calcHeuristic(aGameState){
     let m = aGameState.m;
     let n = aGameState.n;
     let aBoard = aGameState.board;
-    let matrix = [[256,  1,  1,  1],
-                  [ 64, 1,  1,  1],
-                  [ 16,  1,  1,  1],
-                  [ 4,  1,  1,  1]];
+    let matrix = [[256, 1, 1, 1],
+                  [ 64, 1, 1, 1],
+                  [ 16, 1, 1, 1],
+                  [  4, 1, 1, 1]];
 
     for(let i = 0; i < m; i++){
         for(let j = 0; j < n; j++){
@@ -72,7 +72,7 @@ const delay = (ms) => {
 
 let test = (async function () {
     while (AIActive) {
-        await delay(50);
+        await delay(100);
         predictMove(mainGame);
     }
 });
