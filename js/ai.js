@@ -7,19 +7,21 @@ function calcHeuristic(aGameState){
     let m = aGameState.m;
     let n = aGameState.n;
     let aBoard = aGameState.board;
-    let matrix = [[16, 9,  1,  1],
-                  [15, 10, 1,  1],
-                  [14, 11, 1,  1],
-                  [13, 12, 1,  1]];
+    let matrix = [[256,  1,  1,  1],
+                  [ 64, 1,  1,  1],
+                  [ 16,  1,  1,  1],
+                  [ 4,  1,  1,  1]];
 
     for(let i = 0; i < m; i++){
-        val += matrix[i][0] * aBoard[i][0];
+        for(let j = 0; j < n; j++){
+            val += matrix[i][j] * aBoard[i][j];
+        }
     }
 
     for(let i = 0; i < m; i++){
         for(let j = 1; j < n; j++){
             if(aBoard[i][j] == aBoard[i][j-1]){
-                val += aBoard[i][j];
+                val += aBoard[i][j] / 4;
             }
         }
     }
@@ -27,15 +29,7 @@ function calcHeuristic(aGameState){
     for(let j = 0; j < n; j++){
         for(let i = 1; i < m; i++){
             if(aBoard[i][j] == aBoard[i-1][j]){
-                val += aBoard[i][j];
-            }
-        }
-    }
-
-    for(let i = 0; i < m; i++){
-        for(let j = 0; j < n; j++){
-            if(aBoard[i][j] == aBoard[i][j-1]){
-                val += 100;
+                val += aBoard[i][j] / 4;
             }
         }
     }
@@ -58,7 +52,7 @@ function predictMove(){
 
     for (let i = 0; i < moves.length; i++) {
         let heuristic = calcHeuristic(nextGameState(moves[i], mainGame));
-        console.log(heuristic, high);
+        
         if (heuristic > high) {
             high = heuristic;
             nextMove = moves[i];
@@ -78,7 +72,7 @@ const delay = (ms) => {
 
 let test = (async function () {
     while (AIActive) {
-        await delay(100);
+        await delay(50);
         predictMove(mainGame);
     }
 });
