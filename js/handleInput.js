@@ -83,7 +83,7 @@ function isLose(aGameState){
 
 // check if move is possible with given input
 function nextGameState(key, aGameState) {
-    let [up, left, down, right] = possibleMove(aGameState);
+    let [up, left, down, right] = possibleDirection(aGameState);
 
     if((key == "w" || key == "ArrowUp") && up == false)
         return;
@@ -146,7 +146,7 @@ function handleTouchMove(evt) {
     var yDiff = yDown - yUp;
 
     
-    let [up, left, down, right] = possibleMove(mainGame);
+    let [up, left, down, right] = possibleDirection(mainGame);
                                                                          
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {

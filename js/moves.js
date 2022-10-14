@@ -1,7 +1,7 @@
-/* possibleMove, moveUp, moveLeft, moveDown, moveRight
+/* possibleDirection, moveUp, moveLeft, moveDown, moveRight
 
-possibleMove check if two values next to each other are the same, then it check if there is enough
-space for individual directions to move in. Returns the direction for possible moves in this order
+possibleDirection check if two values next to each other are the same, then it check if there is enough
+space for individual directions to move in. Returns the direction for possible direction in this order
 [up, left, down right]
 
 move shift the tile over, then combines them if the are the same value, then shifts the tiles over
@@ -9,7 +9,7 @@ again.
 
 */
 
-function possibleMove(aGameState){
+function possibleDirection(aGameState){
     let m = aGameState.m;
     let n = aGameState.n;
     
@@ -92,6 +92,19 @@ function possibleMove(aGameState){
     }
 
     return [up, left, down, right];
+}
+
+function possibleMove(aGameState){
+    let movesPossible = possibleDirection(aGameState);
+    let arr = [];
+
+    m = {0: 'w', 1: 'a',2: 's', 3: 'd'};
+    for(let i = 0; i < movesPossible.length; i++){
+        if(movesPossible[i])
+            arr.push(m[i]);
+    }
+
+    return arr;
 }
 
 
