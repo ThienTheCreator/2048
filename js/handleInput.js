@@ -11,7 +11,7 @@ function playMove(key){
     if(tempGameState != undefined){
         mainGame = tempGameState; 
         updateScore(mainGame);
-        mainGame = newNumber(mainGame);
+        newNumber(mainGame);
         updateBoard(mainGame);
     }
     
@@ -183,14 +183,14 @@ function handleTouchMove(evt) {
     yDown = null;
 
     updateScore(mainGame);
-    mainGame = newNumber(mainGame);
+    newNumber(mainGame);
     updateBoard(mainGame);
 };
 
 function resetGame(){
     mainGame = new gameState();
-    mainGame = newNumber(mainGame);
-    mainGame = newNumber(mainGame);    
+    newNumber(mainGame);
+    newNumber(mainGame);    
     updateBoard(mainGame);
     updateScore(mainGame);
 

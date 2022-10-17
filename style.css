@@ -141,6 +141,11 @@
     font-size: 35px;
 }
 
+.tile.tile-black{
+    background-color: #3c3a33;
+    font-size: 30px;
+}
+
 #endScreen{
     width: 500px;
     height: 500px;

@@ -7,10 +7,10 @@ function calcHeuristic(aGameState){
     let m = aGameState.m;
     let n = aGameState.n;
     let aBoard = aGameState.board;
-    let matrix = [[256, 1, 1, 1],
-                  [ 64, 1, 1, 1],
-                  [ 16, 1, 1, 1],
-                  [  4, 1, 1, 1]];
+    let matrix = [[ 272, 90, 72, 2],
+                  [ 240, 110, 56, 6],
+                  [ 210, 132, 42, 12],
+                  [ 182, 156, 30, 20]];
 
     for(let i = 0; i < m; i++){
         for(let j = 0; j < n; j++){
@@ -38,7 +38,7 @@ function calcHeuristic(aGameState){
 }
 
 function expectimax(){
-    let nextMove = maxNode(mainGame, 0, 1)
+    let nextMove = maxNode(mainGame, 0, 1);
     
     if (nextMove != undefined) {
         playMove(nextMove);
@@ -46,14 +46,13 @@ function expectimax(){
 }
 
 function maxNode(aGameState, iteration, maxIteration){
-    let newGamestate = structuredClone(aGameState);
-    let possibleMoves = possibleMove(newGamestate);
+    let possibleMoves = possibleMove(aGameState);
 
     let high = 0;
     let nextMove = possibleMoves[0];
 
     for (let i = 0; i < possibleMoves.length; i++) {
-        let heuristic = chanceNode(nextGameState(possibleMoves[i], newGamestate), iteration, maxIteration);
+        let heuristic = chanceNode(nextGameState(possibleMoves[i], aGameState), iteration, maxIteration);
         
         if (heuristic > high) {
             high = heuristic;
@@ -69,7 +68,6 @@ function maxNode(aGameState, iteration, maxIteration){
 };
 
 function chanceState(aGameState, position, arr){
-    let newGamestate = structuredClone(aGameState);
     aGameState.board[position[0]][position[1]] = 2;
     let val1 = calcHeuristic(aGameState);
     
@@ -77,15 +75,12 @@ function chanceState(aGameState, position, arr){
     let val2 = calcHeuristic(aGameState);
 
     arr.push(val1 * .1 + val2 * .9);
+    aGameState.board[position[0]][position[1]] = 0;
 }
 
 function chanceNode(aGameState, iteration, maxIteration){
     if(possibleMove(aGameState).length == 0){
         return calcHeuristic(aGameState);
-    }
-
-    if(iteration < maxIteration){
-
     }
 
     let m = aGameState.m;
