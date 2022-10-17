@@ -50,7 +50,7 @@ function maxNode(aGameState, iteration, maxIteration){
     let possibleMoves = possibleMove(newGamestate);
 
     let high = 0;
-    let nextMove;
+    let nextMove = possibleMoves[0];
 
     for (let i = 0; i < possibleMoves.length; i++) {
         let heuristic = chanceNode(nextGameState(possibleMoves[i], newGamestate), iteration, maxIteration);
