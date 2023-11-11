@@ -1,5 +1,8 @@
-# 2048 Game Clone
+<div align="center"> 
 
+# 2048 Game Clone 
+</div>
+ 
 This is a clone of the 2048 game I made at https://thienthecreator.github.io/2048. 
 
 It also has an AI to play some move which does not play very good. The controls are w, a, s, d,
