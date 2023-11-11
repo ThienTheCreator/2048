@@ -1,207 +1,211 @@
-:root{
-    --grid-background: #bbada0;
-    --tile-color: white;
-    --tile-empty-color: rgba(238, 228, 218, 0.35);
+:root {
+  --grid-background: #bbada0;
+  --tile-color: white;
+  --tile-empty-color: rgba(238, 228, 218, 0.35);
 }
 
-html, body {
-	overscroll-behavior: contain;
+html,
+body {
+  overscroll-behavior: contain;
 }
 
-#container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-
-#gameName{
-    font-size: 80px;
-    font-weight: bold;
-    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+#gameName {
+  font-size: 80px;
+  font-weight: bold;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
-#scoreBox{
-    width: 150px;
-    height: 80px;
-    background-color: #bbada0;
-    color: #ffffff;
-    font-size: 75px;
-    font-weight: bold;
-    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#scoreBox {
+  width: 150px;
+  height: 80px;
+  background-color: #bbada0;
+  color: #ffffff;
+  font-size: 75px;
+  font-weight: bold;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-#scoreTitle{
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
+#scoreTitle {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-#scoreVal{
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
+#scoreVal {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
 }
 
-#gridBackground{
-    width: 500px;
-    height: 500px;
-    background-color: var(--grid-background);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#gridBackground {
+  width: 500px;
+  height: 500px;
+  background-color: var(--grid-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#gridContainer{
-    width: 470px;
-    height: 470px;
-    display: flex;
-    flex-wrap: wrap;
+#gridContainer {
+  width: 470px;
+  height: 470px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.tile{
-    width: 106.25px;
-    height: 106.25px;
-    font-size: 55px;
-    font-weight: bold;
-    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-    color: #ffffff;
-    background-color: var(--tile-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.tile {
+  width: 106.25px;
+  height: 106.25px;
+  font-size: 55px;
+  font-weight: bold;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  color: #ffffff;
+  background-color: var(--tile-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.tile:empty{
-    background-color: var(--tile-empty-color);
+.tile:empty {
+  background-color: var(--tile-empty-color);
 }
 
-#gridContainer > div{
-    margin-right: 15px;
-    margin-bottom: 15px;
+#gridContainer > div {
+  margin-right: 15px;
+  margin-bottom: 15px;
 }
 
-#gridContainer > div:nth-child(4n){
-    margin-right: 0px;
+#gridContainer > div:nth-child(4n) {
+  margin-right: 0px;
 }
 
-#gridContainer > div:nth-child(n + 13){
-    margin-bottom: 0px;
+#gridContainer > div:nth-child(n + 13) {
+  margin-bottom: 0px;
 }
 
-.tile.tile-2{
-    background-color: #eee4da;
-    color: #776e65;
+.tile.tile-2 {
+  background-color: #eee4da;
+  color: #776e65;
 }
 
-.tile.tile-4{
-    background-color: #eee1c9;
-    color: #776e65;
+.tile.tile-4 {
+  background-color: #eee1c9;
+  color: #776e65;
 }
 
-.tile.tile-8{
-    background-color: #f3b27a;
+.tile.tile-8 {
+  background-color: #f3b27a;
 }
 
-.tile.tile-16{
-    background-color: #f69664;
+.tile.tile-16 {
+  background-color: #f69664;
 }
 
-.tile.tile-32{
-    background-color: #f77c5f;
+.tile.tile-32 {
+  background-color: #f77c5f;
 }
 
-.tile.tile-64{
-    background-color: #f75f3b;
+.tile.tile-64 {
+  background-color: #f75f3b;
 }
 
-.tile.tile-128{
-    background-color: #edd073;
-    font-size: 45px;
+.tile.tile-128 {
+  background-color: #edd073;
+  font-size: 45px;
 }
 
-.tile.tile-256{
-    background-color: #edcc62;
-    font-size: 45px;
+.tile.tile-256 {
+  background-color: #edcc62;
+  font-size: 45px;
 }
 
-.tile.tile-512{
-    background-color: #edc950;
-    font-size: 45px;
+.tile.tile-512 {
+  background-color: #edc950;
+  font-size: 45px;
 }
 
-.tile.tile-1024{
-    background-color: #edc53f;
-    font-size: 35px;
+.tile.tile-1024 {
+  background-color: #edc53f;
+  font-size: 35px;
 }
 
-.tile.tile-2048{
-    background-color: #edc22e;
-    font-size: 35px;
+.tile.tile-2048 {
+  background-color: #edc22e;
+  font-size: 35px;
 }
 
-.tile.tile-black{
-    background-color: #3c3a33;
-    font-size: 30px;
+.tile.tile-black {
+  background-color: #3c3a33;
+  font-size: 30px;
 }
 
-#endScreen{
-    width: 500px;
-    height: 500px;
-    font-size: 55px;
-    font-weight: bold;
-    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-    background-color: rgba(237, 194, 46, 0.5);
-    color: #ffffff;
-    position: absolute;
-    z-index: -1;
+#endScreen {
+  width: 500px;
+  height: 500px;
+  font-size: 55px;
+  font-weight: bold;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  background-color: rgba(237, 194, 46, 0.5);
+  color: #ffffff;
+  position: absolute;
+  z-index: -1;
 
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .endAnimation {
-    animation: endTransition 1.8s;
+  animation: endTransition 1.8s;
 }
 
 @keyframes endTransition {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-#buttonContainer{
-    padding-top: 10px;
+#buttonContainer {
+  padding-top: 10px;
 }
 
-#resetButton{
-    width: 150px;
-    height: 80px;
-    background-color: #bbada0;
-    color: #ffffff;
-    font-size: 30px;
+#resetButton {
+  width: 150px;
+  height: 80px;
+  background-color: #bbada0;
+  color: #ffffff;
+  font-size: 30px;
 
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
-#resetButton:hover{
-    opacity: .5;
+#resetButton:hover {
+  opacity: 0.5;
 }
 
-#AIButton{
-    width: 150px;
-    height: 80px;
-    background-color: #bbada0;
-    color: #ffffff;
-    font-size: 30px;
+#AIButton {
+  width: 150px;
+  height: 80px;
+  background-color: #bbada0;
+  color: #ffffff;
+  font-size: 30px;
 }
 
-#AIButton:hover{
-    opacity: .5;
+#AIButton:hover {
+  opacity: 0.5;
 }

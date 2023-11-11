@@ -1,38 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=0.5, maximum-scale=1.0"
+    />
     <title>2048</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="js/gameState.js"></script>
     <script src="js/script.js"></script>
     <script src="js/moves.js"></script>
     <script src="js/handleInput.js"></script>
     <script src="js/ai.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="container">
-        <div id="gameName">2048</div>
-        <div id="scoreBox">
-            <div id="scoreTitle">
-                SCORE
-            </div>
-            <div id="scoreVal">
-                0
-            </div>
-        </div>
-        <div id="gridBackground">
-            <div id="gridContainer">
-            </div>
-            <div id="endScreen">
-                Test
-            </div>
-        </div>
-        <div id="buttonContainer">
-            <button id="resetButton" onclick="resetGame()"> Reset </button>
-            <button id="AIButton" onclick="changeAI()"> Ai: Off </button>
-        </div>
+      <div id="gameName">2048</div>
+      <div id="scoreBox">
+        <div id="scoreTitle">SCORE</div>
+        <div id="scoreVal">0</div>
+      </div>
+      <div id="gridBackground">
+        <div id="gridContainer"></div>
+        <div id="endScreen">Test</div>
+      </div>
+      <div id="buttonContainer">
+        <button id="resetButton" onclick="resetGame()">Reset</button>
+        <button id="AIButton" onclick="changeAI()">Ai: Off</button>
+      </div>
     </div>
-</body>
+  </body>
 </html>
