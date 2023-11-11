@@ -4,7 +4,7 @@
     --tile-empty-color: rgba(238, 228, 218, 0.35);
 }
 
-html {
+html, body {
 	overscroll-behavior: contain;
 }
 
