@@ -6,6 +6,30 @@ document.onkeydown = function (event) {
     playMove(event.key);
 };
 
+function handleWinCondition(aGameState) {
+    if(isWin(aGameState) && !aGameState.hasWon){
+    	document.getElementById("endScreen").innerHTML = "Congradulations! You Win!";
+    	document.getElementById("endScreen").style.zIndex = "0";
+    	document.getElementById("endScreen").className = "endAnimation";
+        
+    	// make screen disappear after some time
+    	setTimeout(function() {
+			document.getElementById("endScreen").style.zIndex = "-1";
+        	document.getElementById("endScreen").className = "endScreen";
+    	}, 3000);
+
+        aGameState.hasWon = true;
+    };
+}
+
+function handleLoseCondition(aGameState) {
+    if(isLose(aGameState)){
+        document.getElementById("endScreen").innerHTML = "Game Over!";
+        document.getElementById("endScreen").style.zIndex = "0";
+        document.getElementById("endScreen").className = "endAnimation";
+    };
+}
+
 function playMove(key){
     let tempGameState = nextGameState(key, mainGame);
     if(tempGameState != undefined){
@@ -14,25 +38,10 @@ function playMove(key){
         newNumber(mainGame);
         updateBoard(mainGame);
     }
-    
-    if(isWin(mainGame) && !mainGame.hasWon){
-        document.getElementById("endScreen").innerHTML = "Congradulations! You Win!";
-        document.getElementById("endScreen").style.zIndex = "0";
-        document.getElementById("endScreen").className = "endAnimation";
-        
-        // make screen disappear after some time
-        setTimeout(function() {
-            document.getElementById("endScreen").style.zIndex = "-1";
-            document.getElementById("endScreen").className = "endScreen";
-        }, 3000);
-        
-        mainGame.hasWon = true;
-    };
-    if(isLose(mainGame)){
-        document.getElementById("endScreen").innerHTML = "Game Over!";
-        document.getElementById("endScreen").style.zIndex = "0";
-        document.getElementById("endScreen").className = "endAnimation";
-    };
+
+	handleWinCondition(mainGame);
+	handleLoseCondition(mainGame);
+
     updateBoard(mainGame);
 }
 
@@ -181,6 +190,9 @@ function handleTouchMove(evt) {
     /* reset values */
     xDown = null;
     yDown = null;
+
+	handleWinCondition(mainGame);
+	handleLoseCondition(mainGame);
 
     updateScore(mainGame);
     newNumber(mainGame);

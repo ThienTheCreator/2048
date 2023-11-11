@@ -4,6 +4,10 @@
     --tile-empty-color: rgba(238, 228, 218, 0.35);
 }
 
+html {
+	overscroll-behavior: contain;
+}
+
 #container{
     display: flex;
     flex-direction: column;
